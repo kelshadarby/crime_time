@@ -97,7 +97,7 @@ Notes:
 - Your line number should be the line of the beginning of the `it` block
 - Example: `spec/features/items/index_spec.rb:15`
 
-### <a name="end-to-end-testing"></a> nd to end testing
+### <a name="end-to-end-testing"></a> End to End Testing
 
 These tests were written to check that the API endpoints were working as well as checking tha the data is returned as expected. The OAuth process was also tested.
 
