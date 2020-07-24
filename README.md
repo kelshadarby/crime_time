@@ -1,6 +1,6 @@
 ![crime time logo (2)](https://user-images.githubusercontent.com/55028065/88417666-8ef2ea80-cd9f-11ea-80e9-c9267edfb5e9.png)
 
-<p align="center">
+<p align="center" style="font-weight:bold;">
   View the live app
   <a href="https://crime-time.herokuapp.com/">here</a>
  </p>
