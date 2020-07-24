@@ -1,4 +1,4 @@
-![crime time logo (2)](https://user-images.githubusercontent.com/55028065/88417666-8ef2ea80-cd9f-11ea-80e9-c9267edfb5e9.png)
+![crime time logo (4)](https://user-images.githubusercontent.com/55028065/88418360-ae3e4780-cda0-11ea-8dae-7b106ad279b3.png)
 
 <p align="center" style="font-weight:bold;">
   View the live app
