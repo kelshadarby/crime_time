@@ -1,5 +1,18 @@
 # [Crime Time](https://crime-time.herokuapp.com/)
 
+## Contents
+- [About](#about)
+- [Getting Started](#getting-started)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Running the Tests](#running-the-tests)
+- [End to End Testing](#end-to-end-testing)
+- [Built With](#built-with)
+- [API's & Tools](#api-tools)
+- [Contributors](#contributors)
+
+## <a name="about"></a> About
+
 Crime Time is a web application that calculates crime statistics in your home state or in an area of your choosing. Users are able to view national or state stats as well as compare two states. This app also allows users to sign in with their Google account to save their hometown and view their hometowns crime statistics
 
 ## <a name="getting-started"></a> Getting Started
@@ -21,7 +34,7 @@ $ rake db:migrate
 $ rake db:seed
 ```
 
-### Prerequisites
+### <a name="prerequisites"></a> Prerequisites
 
 You will need to have the following in order to run this app on your local machine.
 
@@ -31,7 +44,7 @@ Ruby 2.5.3
 Bundler version 2.1.4
 ```
 
-### Installing
+### <a name="installation"></a> Installation
 
 Follow the steps below to view this app locally
 
@@ -51,7 +64,7 @@ $ rails s
 Step 3:
   View the website locally by visiting http://localhost:3000/
 
-## Running the tests
+## <a name="running-the-tests"></a> Running the tests
 
 __To run the entire test suite on your local machine run the following command__
 ```
@@ -79,56 +92,81 @@ Notes:
 - Your line number should be the line of the beginning of the `it` block
 - Example: `spec/features/items/index_spec.rb:15`
 
-### Break down into end to end tests
+### <a name="end-to-end-testing"></a> nd to end testing
 
-Explain what these tests test and why
+These tests were written to check that the API endpoints were working as well as checking tha the data is returned as expected. The OAuth process was also tested.
+
+__API Test Example__
+```
+get '/api/v1/crimes/states?state=CO'
+
+expect(last_response).to be_successful
+
+json = JSON.parse(last_response.body, symbolize_names: true)
+
+expect(json[:data]).to be_instance_of(Hash)
+expect(json[:data][:id]).to eql('CO')
+expect(json[:data][:attributes]).to_not be_empty
+expect(json[:data][:attributes]).to have_key(:rape_total)
+expect(json[:data][:attributes]).to have_key(:property_crime_total)
+expect(json[:data][:attributes]).to have_key(:homicide_total)
+expect(json[:data][:attributes]).to have_key(:arson_total)
+...
+```
+
+__View Test Example__
+```
+  it "Comparing two states" do
+    visit user_compare_path
+
+    within ('.state-1') do
+      expect(page).to have_select('state')
+      select "Colorado", from: :state
+      expect(find('.state').value).to eq("CO")
+    end
+
+    within ('.state-2') do
+      expect(page).to have_select('state')
+      select "Texas", from: :state
+      expect(find('.state').value).to eq("TX")
+    end
+
+    click_on "Compare"
+
+    expect(page).to have_css('.state-1-table')
+    within ('.state-1-table') do
+      expect(page).to have_css('.aggravated-assault')
+      expect(page).to have_css('.homicide')
+      expect(page).to have_css('.rape')
+      expect(page).to have_css('.property-crime')
+      expect(page).to have_css('.arson')
+    end
+
+    expect(page).to have_css('.state-2-table')
+    within ('.state-2-table') do
+      expect(page).to have_css('.aggravated-assault')
+      expect(page).to have_css('.homicide')
+      expect(page).to have_css('.rape')
+      expect(page).to have_css('.property-crime')
+      expect(page).to have_css('.arson')
+    end
+  end
 
 ```
-Give an example
-```
 
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
+## <a name="built-with"></a> Built With
 
 * [Rails](https://rubyonrails.org/) - The web framework used
 * [Sinatra](http://sinatrarb.com/) - The API framework used
 
-## API's & Tools Used
+## <a name="api-tools"></a> API's & Tools Used
 
 * [Google's OAuth](http://www.dropwizard.io/1.0.2/docs/) - Authentication
+* [FBI Crime Data](https://crime-data-explorer.fr.cloud.gov/api) - Crime Statistics API
 
+## <a name="contributors"></a> Contributors
 
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* [**Jordan Sewell**](https://github.com/jrsewell400)
+* [**Kelsha Darby**](https://github.com/kelshadarby)
+* [**Ryan Camp**](https://github.com/cmpprg)
+* [**Jenny Klich**](https://github.com/jklich151)
