@@ -1,4 +1,5 @@
-# [Crime Time](https://crime-time.herokuapp.com/)
+# Crime Time
+View the live app [here](https://crime-time.herokuapp.com/)
 
 ## Contents
 - [About](#about)
