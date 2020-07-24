@@ -26,8 +26,6 @@ This app recieves its info from a Sinatra background worker, viewable [here](htt
 
 Follow the steps below to get you a copy of the project up and running on your local machine for development and testing purposes. 
 
-See deployment for notes on how to deploy the project on a live system.
-
 1. Clone this repo onto your local machine
 
 2. Run the following commands in your terminal to get the code up and running on your local machine 
