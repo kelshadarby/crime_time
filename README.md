@@ -18,7 +18,9 @@
 
 ## <a name="about"></a> About
 
-Crime Time is a web application that calculates crime statistics in your home state or in an area of your choosing. Users are able to view national or state stats as well as compare two states. This app also allows users to sign in with their Google account to save their hometown and view their hometowns crime statistics
+Crime Time is a web application that calculates crime statistics in your home state or in an area of your choosing. Users are able to view national or state stats as well as compare two states. This app also allows users to sign in with their Google account to save their hometown and view their hometowns crime statistics. 
+
+This app recieves its info from a Sinatra background worker, viewable [here](https://github.com/kelshadarby/fbi_sinatra_api)
 
 ## <a name="getting-started"></a> Getting Started
 
